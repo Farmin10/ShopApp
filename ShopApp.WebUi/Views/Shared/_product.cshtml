@@ -3,12 +3,12 @@
     <img class="card-img-top" src="~/images/@Model.ImageUrl" alt="" />
     <div class="card-body">
         <h5 class="card-title">@Model.Name</h5>
-        <h5 class="card-text">@Model.Description</h5>
-        <a asp-controller="Product" asp-action="Details"asp-route-id="@Model.ProductId" class="btn btn-primary btn-sm">Details</a>
-        <a asp-controller="Product" asp-action="Edit"asp-route-id="@Model.ProductId" class="btn btn-primary btn-sm">Edit</a>
-        <form action="/product/delete" method="post">
-            <input type="hidden" name="ProductId" value="@Model.ProductId" />
-            <button type="submit" asp-route-id="@Model.ProductId" class="btn btn-danger btn-sm" style="display:inline;">Delete</button>
-        </form>
+        <small class="text-muted">
+            <i class="fas fa-lira-sign"></i>@Model.Price
+        </small>
+        <div class="card-footer text-center">
+            <a asp-controller="Shop" asp-action="Details" asp-route-url="@Model.Url" class="btn btn-primary btn-sm">Details</a>
+            <a asp-controller="Shop" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-primary btn-sm">Add to cart</a>
+        </div>   
     </div>
 </div>

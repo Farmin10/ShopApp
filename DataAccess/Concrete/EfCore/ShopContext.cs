@@ -10,7 +10,7 @@ namespace DataAccess.Concrete.EfCore
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=Desktop-psjtqan;database=ShopApp;integrated Security=true");
+            optionsBuilder.UseSqlServer("Server=Desktop-psjtqan;database=ShopApps;integrated Security=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

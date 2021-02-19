@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20210218155349_InitialCatalog")]
-    partial class InitialCatalog
+    [Migration("20210219183431_Create")]
+    partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,9 @@ namespace DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryId");
@@ -58,6 +61,9 @@ namespace DataAccess.Migrations
                     b.Property<double?>("Price")
                         .HasColumnType("float");
 
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
@@ -81,13 +87,13 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entity.ProductCategory", b =>
                 {
                     b.HasOne("Entity.Category", "Category")
-                        .WithMany()
+                        .WithMany("ProductCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Entity.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductCategories")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

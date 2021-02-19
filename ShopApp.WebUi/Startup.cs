@@ -22,6 +22,8 @@ namespace ShopApp.WebUi
         {
             services.AddScoped<IProductRepository, EfCoreProductRepository>();
             services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<ICategoryRepository, EfCoreCategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryManager>();
             services.AddControllersWithViews();
         }
 
@@ -36,12 +38,25 @@ namespace ShopApp.WebUi
             }
 
             app.UseRouting();
-           
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name:"default",
-                    pattern:"{controller=Home}/{action=Index}/{id?}"
+                    name: "productdetails",
+                    pattern: "{url}",
+                    defaults: new { controller = "Shop", action = "details" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    name: "products",
+                    pattern: "products/{category?}",
+                    defaults: new { controller = "Shop", action = "List" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
             });
         }
