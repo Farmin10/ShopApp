@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ShopApp.WebUi.Models;
 
 namespace ShopApp.WebUi.ViewModels
 {

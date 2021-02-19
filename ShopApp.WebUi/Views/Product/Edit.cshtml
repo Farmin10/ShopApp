@@ -1,36 +1,31 @@
 ﻿@model Product
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <form method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
     <div class="form-group">
         <label for="Name">Name</label>
-        <input asp-for="Name" value="@Model.ProductId" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <input asp-for="Name" value="@Model.Name" class="form-control" />
     </div>
     <div class="form-group">
         <label for="Price">Price</label>
-        <input asp-for="Price" value="@Model.Price" name="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
+        <input asp-for="Price" name="Price" value="@Model.Price" class="form-control" />
     </div>
     <div class="form-group">
         <label for="Description">Description</label>
         <textarea asp-for="Description" value="@Model.Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label for="ImageUrl">ImageUrl</label>
         <input asp-for="ImageUrl" value="@Model.ImageUrl" class="form-control" />
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
     @*<div class="form-group">
         <label for="CategoryId">CategoryId</label>
         <select asp-for="CategoryId" asp-items="@ViewBag.Categories" value="@Model.CategoryId" class="form-control">
-            <span asp-validation-for="CategoryId" class="text-danger"></span>
             <option selected disabled>Select</option>
-
+            
         </select>
     </div>*@
     <button type="submit" class="btn btn-primary">Submit</button>

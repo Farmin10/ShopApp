@@ -20,11 +20,11 @@
     @RenderSection("Header", false)
     <main class="my-3">
         <div class="container">
-            @if (IsSectionDefined("Catogories"))
+            @if (IsSectionDefined("Categories"))
             {
                 <div class="row">
                     <div class="col-md-3">
-                        @RenderSection("Catogories", false)
+                        @RenderSection("Categories", false)
                     </div>
                     <div class="col-md-9">
                         @RenderBody()
